@@ -22,4 +22,4 @@ echo "# CONFIG_DEBUG_INFO is not set" >> .config
 echo "# CONFIG_DEBUG_INFO_DWARF5 is not set" >> .config
 
 make ARCH=x86 -j$(nproc) bzImage
-cp arch/x86/boot/bzImage ../../build/amd64/vmlinuz-${VERSION}
+cp arch/x86/boot/bzImage ../../amd64/vmlinuz-${VERSION}
