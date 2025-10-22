@@ -1,4 +1,5 @@
 VERSION=6.1.21
+
 cd src
 wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VERSION}.tar.xz
 unxz linux-${VERSION}.tar.xz
