@@ -17,12 +17,19 @@ cp ../../config/alpine/arm64/config .config
 ./scripts/config --enable VIRTIO_CONSOLE
 
 ./scripts/config --enable EXT4_FS
-./scripts/config --enable CONFIG_OVERLAY_FS
+./scripts/config --enable OVERLAY_FS
 
-echo "CONFIG_ARM_SCMI_TRANSPORT_VIRTIO=n" >> .config
-echo "CONFIG_DEBUG_INFO_NONE=y" >> .config
-echo "# CONFIG_DEBUG_INFO is not set" >> .config
-echo "# CONFIG_DEBUG_INFO_DWARF5 is not set" >> .config
+# Мост
+./scripts/config --enable BRIDGE
+./scripts/config --enable BRIDGE_NETFILTER
+./scripts/config --enable IPV6
 
-make ARCH=arm64 -j$(nproc) Image.gz
+./scripts/config --enable VETH
+
+echo "ARM_SCMI_TRANSPORT_VIRTIO=n" >> .config
+echo "DEBUG_INFO_NONE=y" >> .config
+echo "# DEBUG_INFO is not set" >> .config
+echo "# DEBUG_INFO_DWARF5 is not set" >> .config
+
+make ARCH=arm64 -j$(nproc) bzImage
 cp arch/arm64/boot/Image.gz ../../kernel/arm64/vmlinuz-${VERSION}
