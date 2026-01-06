@@ -1,9 +1,9 @@
 VERSION=6.1.21
 
 cd src
-wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VERSION}.tar.xz
-unxz linux-${VERSION}.tar.xz
-tar -xvf linux-${VERSION}.tar
+#wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VERSION}.tar.xz
+#unxz linux-${VERSION}.tar.xz
+#tar -xvf linux-${VERSION}.tar
 cd linux-${VERSION}
 
 cp ../../config/alpine/amd64/config .config
@@ -28,6 +28,7 @@ cp ../../config/alpine/amd64/config .config
 ./scripts/config --enable BRIDGE_NETFILTER
 ./scripts/config --enable IPV6
 
+./scripts/config --enable CONFIG_PACKET
 ./scripts/config --enable VETH
 
 ./scripts/config --enable DEBUG_INFO_NONE

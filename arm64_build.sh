@@ -24,6 +24,7 @@ cp ../../config/alpine/arm64/config .config
 ./scripts/config --enable BRIDGE_NETFILTER
 ./scripts/config --enable IPV6
 
+./scripts/config --enable CONFIG_PACKET
 ./scripts/config --enable VETH
 
 echo "ARM_SCMI_TRANSPORT_VIRTIO=n" >> .config
