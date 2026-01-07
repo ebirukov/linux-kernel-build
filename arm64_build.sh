@@ -5,7 +5,7 @@ VERSION=6.1.21
 cd src
 wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${VERSION}.tar.xz
 unxz linux-${VERSION}.tar.xz
-tar -xvf linux-${VERSION}.tar
+tar -xf linux-${VERSION}.tar
 cd linux-${VERSION}
 
 cp ../../config/alpine/arm64/config .config
@@ -27,10 +27,10 @@ cp ../../config/alpine/arm64/config .config
 ./scripts/config --enable CONFIG_PACKET
 ./scripts/config --enable VETH
 
-echo "ARM_SCMI_TRANSPORT_VIRTIO=n" >> .config
-echo "DEBUG_INFO_NONE=y" >> .config
-echo "# DEBUG_INFO is not set" >> .config
-echo "# DEBUG_INFO_DWARF5 is not set" >> .config
+./scripts/config --disable ARM_SCMI_TRANSPORT_VIRTIO
+./scripts/config --disable DEBUG_INFO
+./scripts/config --disable DEBUG_INFO_DWARF5
 
-make ARCH=arm64 -j$(nproc) bzImage
+make ARCH=arm64 -j$(nproc) Image.gz
+
 cp arch/arm64/boot/Image.gz ../../kernel/arm64/vmlinuz-${VERSION}
