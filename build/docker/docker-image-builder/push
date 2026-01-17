@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker buildx create --name multiarch-builder --use
+docker buildx build --platform linux/amd64,linux/arm64 -t ebirukov/linux-kernel:6.1.21 --push -f Dockerfile ../../kernel/
