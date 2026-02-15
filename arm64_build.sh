@@ -17,6 +17,9 @@ cp ../../config/alpine/arm64/config .config
 ./scripts/config --enable VIRTIO_CONSOLE
 ./scripts/config --enable RTC_DRV_PL031
 
+./scripts/config --enable VIRTIO_BLK
+./scripts/config --enable VIRTIO_MMIO
+
 ./scripts/config --enable EXT4_FS
 ./scripts/config --enable OVERLAY_FS
 
